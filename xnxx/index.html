@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高中生-青少年健康教育与生活指南-青春导航</title>
+    <meta name="description" content="青春导航致力于为高中生提供专业的心理健康、学业规划、人际关系指导及青春期生理健康科普，帮助青少年健康、阳光地度过青春期。">
+    <meta name="keywords" content="高中生,青春期教育,心理健康,学业规划,人际关系,青春导航">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #50e3c2;
+            --accent-color: #ff6b6b;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-body: #f8f9fa;
+            --bg-card: #ffffff;
+            --spacing-unit: 16px;
+            --border-radius: 12px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 头部 */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 16px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions .btn-login {
+            padding: 8px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, #e0f7fa 0%, #e1bee7 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        /* 核心栏目 */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            background-color: #eee;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: #e3f2fd;
+            color: var(--primary-color);
+            border-radius: 4px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card-desc {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .card-link::after {
+            content: '→';
+            margin-left: 5px;
+            transition: margin-left 0.2s;
+        }
+
+        .card-link:hover::after {
+            margin-left: 10px;
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            background-color: var(--bg-card);
+            padding: 60px 0;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            padding-left: 10px;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        /* 底部 */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #95a5a6;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            nav {
+                display: none; /* 移动端简化导航 */
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <span>青春导航</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#health">身心健康</a></li>
+                    <li><a href="#study">学业规划</a></li>
+                    <li><a href="#life">校园生活</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn-login">加入社区</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>关注高中生成长，助力美好未来</h1>
+                <p>为高中生提供科学的心理辅导、实用的备考策略与健康的青春期指导，陪伴你走过关键的人生阶段。</p>
+                <div class="search-box">
+                    <input type="text" placeholder="搜索心理健康、学习方法、校园趣事...">
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心内容区 -->
+        <div class="container">
+            
+            <!-- 健康与心理 -->
+            <section id="health">
+                <div class="section-title">
+                    <h2>身心健康指南</h2>
+                    <p>科学的认知与引导，构建强大的内心世界</p>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/mental1/400/250" alt="心理健康" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">心理健康</span>
+                            <h3 class="card-title">如何应对考试焦虑？</h3>
+                            <p class="card-desc">了解焦虑的来源，掌握深呼吸、正念冥想等实用技巧，轻松面对大考。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/sleep/400/250" alt="睡眠健康" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">睡眠管理</span>
+                            <h3 class="card-title">高中生必知的作息规律</h3>
+                            <p class="card-desc">保证7-8小时高质量睡眠的重要性，以及如何制定不熬夜的作息表。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/sport/400/250" alt="运动健身" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">体育锻炼</span>
+                            <h3 class="card-title">运动是最好的减压药</h3>
+                            <p class="card-desc">每天坚持30分钟有氧运动，提升专注力，改善情绪，增强体质。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 学业规划 -->
+            <section id="study">
+                <div class="section-title">
+                    <h2>学业规划与提升</h2>
+                    <p>高效学习方法，明确升学目标</p>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/study1/400/250" alt="学习方法" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">学习方法</span>
+                            <h3 class="card-title">高效笔记法：康奈尔笔记</h3>
+                            <p class="card-desc">学会整理课堂笔记，通过复习栏和总结栏的配合，大幅提升记忆效率。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/time/400/250" alt="时间管理" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">时间管理</span>
+                            <h3 class="card-title">四象限法则：拒绝拖延</h3>
+                            <p class="card-desc">区分轻重缓急，合理分配课余时间，让每一分钟都为梦想服务。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/exam/400/250" alt="考试技巧" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">应试技巧</span>
+                            <h3 class="card-title">考场上的答题策略</h3>
+                            <p class="card-desc">从审题技巧到时间分配，分享多年一线教师总结的考场生存法则。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 校园生活 -->
+            <section id="life">
+                <div class="section-title">
+                    <h2>校园生活与人际</h2>
+                    <p>构建和谐的人际关系，享受多彩校园时光</p>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/friend/400/250" alt="人际关系" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">人际交往</span>
+                            <h3 class="card-title">如何处理与同学的矛盾</h3>
+                            <p class="card-desc">沟通是桥梁，学会换位思考，用成熟的态度化解校园小摩擦。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/club/400/250" alt="社团活动" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">社团活动</span>
+                            <h3 class="card-title">高中社团选择的建议</h3>
+                            <p class="card-desc">不要盲目跟风，根据自己的兴趣和特长选择能真正锻炼能力的社团。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="https://picsum.photos/seed/tech/400/250" alt="数字生活" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">数字生活</span>
+                            <h3 class="card-title">合理使用手机与网络</h3>
+                            <p class="card-desc">防范网络沉迷，辨别网络信息真伪，做一个理智的数字原住民。</p>
+                            <a href="#" class="card-link">阅读全文</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 常见问题 FAQ -->
+            <section id="faq" class="faq-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>常见问题解答</h2>
+                        <p>关于高中生活的疑惑，这里都有答案</p>
+                    </div>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">高中生压力大睡不着怎么办？</div>
+                            <div class="faq-answer">建议睡前一小时远离电子屏幕，可以尝试听轻音乐或阅读纸质书。如果长期失眠，建议咨询学校心理老师或专业医生。</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">成绩一直上不去很迷茫怎么办？</div>
+                            <div class="faq-answer">迷茫往往是因为缺乏具体计划。建议先分析错题原因，找出薄弱学科，制定每日复习计划，并适当寻求老师或同学的帮助。</div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">如何与父母有效沟通？</div>
+                            <div class="faq-answer">沟通时注意语气和时机，避免在对方忙碌或情绪激动时争执。尝试用“我感到……”的句式表达自己的需求，而不是指责。</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>关于青春导航</h3>
+                    <p style="color: #bdc3c7; font-size: 14px; line-height: 1.8;">
+                        我们致力于为青少年提供客观、科学、健康的信息服务，陪伴每一位学子健康成长。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="#">心理健康</a></li>
+                        <li><a href="#">学习方法</a></li>
+                        <li><a href="#">升学资讯</a></li>
+                        <li><a href="#">校园活动</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>联系我们</h3>
+                    <ul>
+                        <li><a href="#">意见反馈</a></li>
+                        <li><a href="#">合作投稿</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">免责声明</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 青春导航 - 青少年健康教育平台. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的 FAQ 交互逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                item.querySelector('.faq-question').addEventListener('click', () => {
+                    // 关闭其他已打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

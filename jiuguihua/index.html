@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="玖瑰花-鲜花订购与花艺搭配指南，提供玫瑰品种介绍、花语寓意、选购技巧及配送服务，让每一朵玫瑰都传递最真挚的情感。">
+    <meta name="keywords" content="玖瑰花,玫瑰花,鲜花订购,花语,送花指南,玫瑰品种,节日鲜花">
+    <title>玖瑰花-鲜花订购与花艺搭配指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d90429;
+            --secondary-color: #ffb703;
+            --text-dark: #2b2d42;
+            --text-light: #8d99ae;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #b01f26;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ffe5ec 0%, #fff 100%);
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .search-bar {
+            background: var(--bg-white);
+            padding: 0.5rem;
+            border-radius: 50px;
+            display: inline-flex;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            outline: none;
+            border-radius: 50px;
+        }
+
+        .search-bar button {
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #ffc300;
+        }
+
+        /* Categories */
+        .section {
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-img {
+            height: 180px;
+            background-color: #ddd;
+            position: relative;
+        }
+        
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .category-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .category-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Guide Section */
+        .guide-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .guide-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .guide-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .guide-image img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Flower Meanings */
+        .meanings-section {
+            background-color: var(--bg-white);
+        }
+
+        .meaning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .meaning-card {
+            text-align: center;
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+        }
+
+        .meaning-card:hover {
+            border-color: var(--primary-color);
+            background-color: #fff0f2;
+        }
+
+        .flower-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .meaning-card h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .meaning-card span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .tip-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .tip-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(217, 4, 41, 0.1);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .tip-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .tip-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 4rem 1.5rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #aeb4c1;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aeb4c1;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .guide-container {
+                grid-template-columns: 1fr;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                🌹 玖瑰<span>花语</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#types">品种分类</a>
+                <a href="#meanings">花语寓意</a>
+                <a href="#guide">养护指南</a>
+                <a href="#tips">选购技巧</a>
+            </nav>
+            <a href="#" class="cta-btn">立即订购</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>用玖瑰花诉说爱意</h1>
+                <p>精选全球优质玫瑰，无论是表白、纪念日还是日常问候，我们都致力于为您提供最完美的花礼体验。</p>
+                <form class="search-bar" onsubmit="event.preventDefault(); alert('感谢您的搜索！这是一个演示页面。');">
+                    <input type="text" placeholder="搜索花语、品种或配送城市..." required>
+                    <button type="submit">搜索</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="types" class="section">
+            <div class="section-header">
+                <h2>热门玫瑰品种</h2>
+                <p>不同品种的玖瑰花，拥有独特的色彩与香气，适合不同的场合</p>
+            </div>
+            <div class="category-grid">
+                <article class="category-card">
+                    <div class="category-img">
+                        <img src="https://picsum.photos/seed/rose1/400/300" alt="红玫瑰">
+                    </div>
+                    <div class="category-info">
+                        <h3>红玫瑰</h3>
+                        <p>经典的爱与热情，情人节首选，代表热恋中的心跳。</p>
+                    </div>
+                </article>
+                <article class="category-card">
+                    <div class="category-img">
+                        <img src="https://picsum.photos/seed/rose2/400/300" alt="粉玫瑰">
+                    </div>
+                    <div class="category-info">
+                        <h3>粉玫瑰</h3>
+                        <p>初恋的甜蜜，温柔与感动，适合送给初识或心仪对象。</p>
+                    </div>
+                </article>
+                <article class="category-card">
+                    <div class="category-img">
+                        <img src="https://picsum.photos/seed/rose3/400/300" alt="白玫瑰">
+                    </div>
+                    <div class="category-info">
+                        <h3>白玫瑰</h3>
+                        <p>纯洁与尊敬，象征天真无邪，也是婚礼常用的花材。</p>
+                    </div>
+                </article>
+                <article class="category-card">
+                    <div class="category-img">
+                        <img src="https://picsum.photos/seed/rose4/400/300" alt="黄玫瑰">
+                    </div>
+                    <div class="category-info">
+                        <h3>黄玫瑰</h3>
+                        <p>友谊与歉意，适合送给闺蜜或表达诚挚的歉意。</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section id="guide" class="section">
+            <div class="guide-container">
+                <div class="guide-content">
+                    <h2>如何让玖瑰花开得更久？</h2>
+                    <p>收到玖瑰花后，正确的处理方式能显著延长花期。我们为您整理了从剪枝到换水的全套养护方案。</p>
+                    <ul class="feature-list">
+                        <li>45度斜剪根部，增加吸水面积</li>
+                        <li>去除叶片，避免浸泡水中腐烂</li>
+                        <li>每天换水并清洗花瓶</li>
+                        <li>远离阳光直射和空调出风口</li>
+                    </ul>
+                    <a href="#" style="color: var(--primary-color); font-weight: 600; margin-top: 1rem; display: inline-block;">查看完整养护手册 &rarr;</a>
+                </div>
+                <div class="guide-image">
+                    <img src="https://picsum.photos/seed/flowercare/600/400" alt="玫瑰养护示意图">
+                </div>
+            </div>
+        </section>
+
+        <!-- Meanings Section -->
+        <section id="meanings" class="section meanings-section">
+            <div class="section-header">
+                <h2>玖瑰花语大全</h2>
+                <p>每一朵花都有它的语言，读懂它们，让表达更加精准</p>
+            </div>
+            <div class="meaning-grid">
+                <div class="meaning-card">
+                    <span class="flower-icon">🌹</span>
+                    <h4>红玫瑰</h4>
+                    <span>热恋、深爱</span>
+                </div>
+                <div class="meaning-card">
+                    <span class="flower-icon">🌸</span>
+                    <h4>粉玫瑰</h4>
+                    <span>感动、爱的宣言</span>
+                </div>
+                <div class="meaning-card">
+                    <span class="flower-icon">🤍</span>
+                    <h4>白玫瑰</h4>
+                    <span>天真、纯洁</span>
+                </div>
+                <div class="meaning-card">
+                    <span class="flower-icon">🟡</span>
+                    <h4>黄玫瑰</h4>
+                    <span>道歉、友谊</span>
+                </div>
+                <div class="meaning-card">
+                    <span class="flower-icon">🟣</span>
+                    <h4>紫玫瑰</h4>
+                    <span>忧郁、浪漫</span>
+                </div>
+                <div class="meaning-card">
+                    <span class="flower-icon">🟠</span>
+                    <h4>橙玫瑰</h4>
+                    <span>青春、友谊</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section id="tips" class="section">
+            <div class="section-header">
+                <h2>选购与配送贴士</h2>
+            </div>
+            <div class="tips-grid">
+                <article class="tip-card">
+                    <div class="tip-number">01</div>
+                    <h3>根据关系选花</h3>
+                    <p>送给伴侣首选红玫瑰或粉玫瑰；送给长辈建议康乃馨搭配少量玫瑰；送给朋友黄色玫瑰最为合适。</p>
+                </article>
+                <article class="tip-card">
+                    <div class="tip-number">02</div>
+                    <h3>注意花期</h3>
+                    <p>购买时请检查花瓣是否紧实，花苞饱满度适中。建议在花店开放度约为70%时购买，运输途中绽放效果最佳。</p>
+                </article>
+                <article class="tip-card">
+                    <div class="tip-number">03</div>
+                    <h3>配送时效</h3>
+                    <p>同城配送建议提前1小时下单，确保在指定时间送达。异地配送需注意天气影响，暴雨天气可能延误。</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <a href="#" class="logo" style="color: white; margin-bottom: 1rem; display: inline-block;">
+                    🌹 玖瑰花语
+                </a>
+                <p style="color: #aeb4c1; font-size: 0.9rem;">
+                    专注高品质鲜花服务，让爱传递不缺席。我们致力于为每一位顾客提供最贴心的花艺体验。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">服务条款</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">配送说明</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>常见问题</h4>
+                <ul>
+                    <li><a href="#">如何处理萎蔫的花？</a></li>
+                    <li><a href="#">支持哪些城市配送？</a></li>
+                    <li><a href="#">能否定制包装？</a></li>
+                    <li><a href="#">退换货政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <ul>
+                    <li>客服热线：400-123-4567</li>
+                    <li>工作时间：09:00 - 21:00</li>
+                    <li>电子邮箱：service@rose-guide.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 玖瑰花语网. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

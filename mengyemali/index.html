@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="梦野玛丽亚官方主页，提供最新漫画连载、角色图鉴、作者访谈及粉丝社区资讯。">
+    <meta name="keywords" content="梦野玛丽亚, 梦野玛丽亚漫画, 梦野玛丽亚角色, 梦野玛丽亚访谈">
+    <title>梦野玛丽亚-漫画连载与角色图鉴</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #6a1b9a;
+            --secondary-color: #9c27b0;
+            --accent-color: #f3e5f5;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --bg-body: #f9f9f9;
+            --bg-card: #ffffff;
+            --border-radius: 8px;
+            --spacing-unit: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .search-btn {
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 6px 16px;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px var(--spacing-unit);
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+        }
+
+        .section-title h2 {
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .section-title a {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        /* Featured Grid */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            padding-top: 140%; /* Aspect Ratio for Manga Covers */
+            background-color: #eee;
+        }
+
+        .card-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .card-body {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 12px;
+        }
+
+        .author {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .read-btn {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Character Section */
+        .character-section {
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 60px;
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .character-item {
+            text-align: center;
+        }
+
+        .char-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 16px;
+            border: 3px solid var(--accent-color);
+        }
+
+        .char-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .char-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* News & Info */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .news-item {
+            display: flex;
+            background: white;
+            padding: 16px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            align-items: center;
+        }
+
+        .news-date {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 70px;
+            margin-right: 20px;
+        }
+
+        .news-date .day {
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .news-date .month {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .news-content h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .news-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c2c2c;
+            color: #ccc;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 12px;
+            }
+            
+            nav ul {
+                margin-top: 12px;
+                gap: 16px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .news-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .news-date {
+                margin-right: 0;
+                margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+            梦野玛丽亚<span>主页</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">最新连载</a></li>
+                <li><a href="#">角色图鉴</a></li>
+                <li><a href="#">作者访谈</a></li>
+                <li><a href="#">周边商城</a></li>
+            </ul>
+        </nav>
+        <button class="search-btn" aria-label="搜索">🔍</button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>探索梦野玛丽亚的奇幻世界</h1>
+        <p>汇集最新漫画章节、独家角色设定及粉丝社区资讯，在这里感受最纯粹的故事魅力。</p>
+        <a href="#" class="hero-btn">开始阅读</a>
+    </div>
+</section>
+
+<main class="container">
+    
+    <!-- Featured Section -->
+    <section>
+        <div class="section-title">
+            <h2>热门连载</h2>
+            <a href="#">查看全部 ></a>
+        </div>
+        <div class="grid-layout">
+            <!-- Card 1 -->
+            <article class="card">
+                <div class="card-img-wrapper">
+                    <span class="card-tag">更新中</span>
+                    <img src="https://picsum.photos/seed/mh1/300/420" alt="封面图" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">星尘回响录</h3>
+                    <p class="card-meta">冒险 / 科幻 / 奇幻</p>
+                    <div class="card-footer">
+                        <span class="author">作者: 梦野玛丽亚</span>
+                        <a href="#" class="read-btn">阅读</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="card">
+                <div class="card-img-wrapper">
+                    <span class="card-tag">完结</span>
+                    <img src="https://picsum.photos/seed/mh2/300/420" alt="封面图" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">暮色森林法则</h3>
+                    <p class="card-meta">悬疑 / 治愈 / 恋爱</p>
+                    <div class="card-footer">
+                        <span class="author">作者: 梦野玛丽亚</span>
+                        <a href="#" class="read-btn">阅读</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="card">
+                <div class="card-img-wrapper">
+                    <span class="card-tag">热门</span>
+                    <img src="https://picsum.photos/seed/mh3/300/420" alt="封面图" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">机械之心</h3>
+                    <p class="card-meta">机甲 / 战斗 / 科幻</p>
+                    <div class="card-footer">
+                        <span class="author">作者: 梦野玛丽亚</span>
+                        <a href="#" class="read-btn">阅读</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="card">
+                <div class="card-img-wrapper">
+                    <span class="card-tag">连载中</span>
+                    <img src="https://picsum.photos/seed/mh4/300/420" alt="封面图" class="card-img">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">猫之国度的信使</h3>
+                    <p class="card-meta">童话 / 奇幻 / 冒险</p>
+                    <div class="card-footer">
+                        <span class="author">作者: 梦野玛丽亚</span>
+                        <a href="#" class="read-btn">阅读</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Character Section -->
+    <section class="character-section">
+        <div class="section-title">
+            <h2>主要角色</h2>
+            <a href="#">角色图鉴 ></a>
+        </div>
+        <div class="character-grid">
+            <div class="character-item">
+                <img src="https://picsum.photos/seed/char1/200/200" alt="主角" class="char-avatar">
+                <h3 class="char-name">艾琳</h3>
+                <p class="char-desc">星尘回响录女主角，拥有感知星尘能力的少女。</p>
+            </div>
+            <div class="character-item">
+                <img src="https://picsum.photos/seed/char2/200/200" alt="配角" class="char-avatar">
+                <h3 class="char-name">凯尔</h3>
+                <p class="char-desc">机械之心中的王牌飞行员，性格冷酷但内心细腻。</p>
+            </div>
+            <div class="character-item">
+                <img src="https://picsum.photos/seed/char3/200/200" alt="配角" class="char-avatar">
+                <h3 class="char-name">莫尔</h3>
+                <p class="char-desc">暮色森林的守护者，一只智慧极高的独眼狼。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section>
+        <div class="section-title">
+            <h2>最新资讯</h2>
+        </div>
+        <div class="news-list">
+            <article class="news-item">
+                <div class="news-date">
+                    <span class="day">15</span>
+                    <span class="month">10月</span>
+                </div>
+                <div class="news-content">
+                    <h3>星尘回响录 第45话发布</h3>
+                    <p>艾琳一行人终于找到了通往核心星域的入口，新的危机正在酝酿。</p>
+                </div>
+            </article>
+            <article class="news-item">
+                <div class="news-date">
+                    <span class="day">08</span>
+                    <span class="month">10月</span>
+                </div>
+                <div class="news-content">
+                    <h3>作者访谈：关于机械之心的创作灵感</h3>
+                    <p>梦野玛丽亚在本次专访中分享了关于未来科技与人类情感的思考。</p>
+                </div>
+            </article>
+            <article class="news-item">
+                <div class="news-date">
+                    <span class="day">01</span>
+                    <span class="month">10月</span>
+                </div>
+                <div class="news-content">
+                    <h3>梦野玛丽亚新作《猫之国度的信使》即将开启</h3>
+                    <p>全新的奇幻冒险故事，敬请期待首话上线。</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h4>关于梦野玛丽亚</h4>
+            <ul>
+                <li><a href="#">作者简介</a></li>
+                <li><a href="#">合作联系</a></li>
+                <li><a href="#">版权声明</a></li>
+                <li><a href="#">隐私政策</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>漫画分类</h4>
+            <ul>
+                <li><a href="#">冒险奇幻</a></li>
+                <li><a href="#">都市恋爱</a></li>
+                <li><a href="#">机甲战斗</a></li>
+                <li><a href="#">悬疑推理</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>社区互动</h4>
+            <ul>
+                <li><a href="#">官方论坛</a></li>
+                <li><a href="#">粉丝群组</a></li>
+                <li><a href="#">同人投稿</a></li>
+                <li><a href="#">意见反馈</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2023 梦野玛丽亚官方主页. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+  </html>
